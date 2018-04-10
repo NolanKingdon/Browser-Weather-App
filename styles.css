@@ -1,0 +1,91 @@
+/* Box layout */
+* {
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: right;
+    padding: 15px;
+}
+.col-1 {width: 33.33%;}
+.col-2 {width: 66.66%;}
+.col-3 {width: 100%; font-size-adjust: auto;}
+
+.mainCard{
+    color: #000000;
+    text-align: center;
+    height: 40vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    font-family: 'Oswald', sans-serif;
+}
+
+/* Typical formatting */
+html {
+    background: url(backgrounds/else.jpg) no-repeat center center fixed;
+    background-size: cover;
+    
+}
+
+h1 {
+    color: #715c28;
+    text-align: center;
+    font-size: 3em;
+    font-family: 'Cinzel', serif;
+    text-shadow: 1px 1px black;
+}
+
+
+
+/* Button Style and Button Animations */
+
+/* Let's redo this button in the future. Kind of ugly now IMO */
+#dyn {
+    border: none;
+    padding: 15px 15px;
+    background-color: burlywood;
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 25px;
+    box-shadow: 0px 1px 1px 0px;
+}
+
+#dyn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 1s;
+}
+
+#dyn span:after {
+    content: '\21A1';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+#dyn:hover span {
+  padding-right: 20px;
+}
+
+#dyn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+/* Phone load ins */
+@media only screen and (max-width: 480px){
+    [class*="col-"] {
+        width: 100%;
+    }
+    h1 {
+        font-size: 1em;
+    }
+}
