@@ -12,4 +12,4 @@ This is a side project I used to familiarize myself with several aspects of web 
 #### Important Note
 
 This needs to be run on LocalHost for the API call to work. I used Python 3:
-*  > python -m http.server
+ > python -m http.server
