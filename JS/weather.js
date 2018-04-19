@@ -2,7 +2,8 @@ var latErr = document.getElementById("latErr");
 var long;
 var lat;
 var apiKey = "96adbdcac13d991030c7cdc4683d94f6";
-var weatherType;
+//Using WeatherIcon exclusively now.
+//var weatherType;
 var weatherIcon;
 
 function getLocation() {
@@ -25,10 +26,11 @@ function apiCall(long, lat) {
         $("#temp").html(result.main["temp"] + " C");
         $("#tempRange").html("Temp range: " + result.main["temp_min"] + " - " + result.main["temp_max"] + " C");
         $("#desc").html("Weather: " + result.weather[0].description);
-        weatherType = result.weather[0].id;
+//        weatherType = result.weather[0].id;
         weatherIcon = result.weather[0].icon;
         changeIcon(weatherIcon);
-        changeBG(weatherType);
+        //Used to use WeatherType here, but it was better off using icon (Simpler)
+        changeBG(weatherIcon);
     }
 })}
 //This isn't currently used, but its a goal to have an accurate weather map show as well. Not sure if this is the avenue I want though.
@@ -44,15 +46,17 @@ function changeIcon(icon){
 }
 
 function changeBG(type){
-    if(type == 800){
-        $('html').css("background", "url(backgrounds/day/800.jpg no-repeat center center fixed");
-        $('html').css("background-size", "cover");
-    } else{
-        type = type.toString()[0] + "xx" + ".jpg";
+    type = type.toString() + ".jpg";
+    //Sorting Day/night
+    if (type[2] == "d"){
         $('html').css("background", "url(backgrounds/day/" + type + ") no-repeat center center fixed");
+        $('html').css("background-size", "cover");
+    } else {
+        $('html').css("background", "url(backgrounds/night/" + type + ") no-repeat center center fixed");
         $('html').css("background-size", "cover");
     }
 }
+
 window.onload = getLocation();
 $(".refresh").click(function(){
     getLocation();
